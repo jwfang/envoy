@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 yum install -y rh-git29-git golang libtool make openssl wget time python27-python-pip \
                unzip java-1.8.0-openjdk-devel which cmake devtoolset-4-libatomic-devel
 
