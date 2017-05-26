@@ -110,6 +110,7 @@ TEST_P(Http2CodecImplTest, ExpectContinueHeadersOnlyResponse) {
   EXPECT_CALL(response_decoder_, decodeHeaders_(HeaderMapEqual(&continue_headers), false));
   request_encoder_.encodeHeaders(request_headers, false);
 
+  EXPECT_CALL(request_decoder_, decodeData(_, false));
   EXPECT_CALL(request_decoder_, decodeData(_, true));
   Buffer::OwnedImpl hello("hello");
   request_encoder_.encodeData(hello, true);
