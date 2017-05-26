@@ -255,24 +255,22 @@ TEST_P(Http2CodecImplTest, DeferredReset) {
 INSTANTIATE_TEST_CASE_P(
     Http2CodecImplTest, Http2CodecImplTest,
     ::testing::Combine(
-        ::testing::Combine(::testing::Values(Http2Settings::MIN_HPACK_TABLE_SIZE,
-                                             Http2Settings::DEFAULT_HPACK_TABLE_SIZE,
-                                             Http2Settings::MAX_HPACK_TABLE_SIZE),
-                           ::testing::Values(Http2Settings::MIN_MAX_CONCURRENT_STREAMS,
-                                             Http2Settings::DEFAULT_MAX_CONCURRENT_STREAMS,
-                                             Http2Settings::MAX_MAX_CONCURRENT_STREAMS),
-                           ::testing::Values(Http2Settings::MIN_INITIAL_WINDOW_SIZE,
-                                             Http2Settings::DEFAULT_INITIAL_WINDOW_SIZE,
-                                             Http2Settings::MAX_INITIAL_WINDOW_SIZE)),
-        ::testing::Combine(::testing::Values(Http2Settings::MIN_HPACK_TABLE_SIZE,
-                                             Http2Settings::DEFAULT_HPACK_TABLE_SIZE,
-                                             Http2Settings::MAX_HPACK_TABLE_SIZE),
-                           ::testing::Values(Http2Settings::MIN_MAX_CONCURRENT_STREAMS,
-                                             Http2Settings::DEFAULT_MAX_CONCURRENT_STREAMS,
-                                             Http2Settings::MAX_MAX_CONCURRENT_STREAMS),
-                           ::testing::Values(Http2Settings::MIN_INITIAL_WINDOW_SIZE,
-                                             Http2Settings::DEFAULT_INITIAL_WINDOW_SIZE,
-                                             Http2Settings::MAX_INITIAL_WINDOW_SIZE))
+        ::testing::Combine(::testing::Values(
+                                             Http2Settings::DEFAULT_HPACK_TABLE_SIZE
+                                             ),
+                           ::testing::Values(
+                                             Http2Settings::DEFAULT_MAX_CONCURRENT_STREAMS
+                                             ),
+                           ::testing::Values(
+                                             Http2Settings::DEFAULT_INITIAL_WINDOW_SIZE
+                                             )),
+        ::testing::Combine(::testing::Values(
+                                             Http2Settings::DEFAULT_HPACK_TABLE_SIZE
+                                             ),
+                           ::testing::Values(
+                                             Http2Settings::DEFAULT_MAX_CONCURRENT_STREAMS
+                                             ),
+                           ::testing::Values(4))  // one smaller than "hello", initial client data
 
             ));
 
