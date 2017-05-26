@@ -120,12 +120,11 @@ http2_settings
     NOTE: Total HTTP/2 streams is 2^31, one side (client/server) is 2^30. To be safe, we use 2^29.
 
   initial_window_size
-    *(optional, integer)* `Initial flow-control window`_ size. Valid values range from 65535
-    (HTTP/2 default window size, also minimum) to 2147483647 (2^31 - 1, also HTTP/2 maximum)
-    and defaults to 268435456 (256 * 1024 * 1024).
+    *(optional, integer)* `Initial flow-control window`_ size. Valid values range from 1
+    (HTTP/2 minimum) to 2147483647 (2^31 - 1, HTTP/2 maximum) and defaults to 268435456 (256 * 1024 * 1024).
 
-    NOTE: 65535 is the initial window size from HTTP/2 spec. We only support increase the default window
-    size now, so it's also the minimum.
+    NOTE: Be careful when setting this smaller than the HTTP/2 default (65535), see
+    `Reducing the Stream Window Size`_.
 
   These are the same options available in the upstream cluster :ref:`http2_settings
   <config_cluster_manager_cluster_http2_settings>` option.
@@ -133,6 +132,7 @@ http2_settings
   .. _Maximum Table Size: http://httpwg.org/specs/rfc7541.html#maximum.table.size
   .. _Maximum concurrent streams: http://httpwg.org/specs/rfc7540.html#rfc.section.5.1.2
   .. _Initial flow-control window: http://httpwg.org/specs/rfc7540.html#InitialWindowSize
+  .. _Reducing the Stream Window Size: http://httpwg.org/specs/rfc7540.html#rfc.section.6.9.3
 
 .. _config_http_conn_man_server_name:
 

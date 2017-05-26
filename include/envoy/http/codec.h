@@ -168,9 +168,8 @@ struct Http2Settings {
   // side we do 2^29. Same as MAX_STREAMS in source/common/http/http2/conn_pool.h.
   static const uint32_t MAX_MAX_CONCURRENT_STREAMS = 1 << 29;
 
-  // initial value from HTTP/2 spec, same as NGHTTP2_INITIAL_CONNECTION_WINDOW_SIZE.
-  // We only support increasing window size now, so this is also the minimum.
-  static const uint32_t MIN_INITIAL_WINDOW_SIZE = (1 << 16) - 1;
+  // minimum from HTTP/2 spec
+  static const uint32_t MIN_INITIAL_WINDOW_SIZE = 1;
   static const uint32_t DEFAULT_INITIAL_WINDOW_SIZE = 256 * 1024 * 1024;
   // maximum from HTTP/2 spec
   static const uint32_t MAX_INITIAL_WINDOW_SIZE = (1U << 31) - 1;
