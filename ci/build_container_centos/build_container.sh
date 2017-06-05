@@ -5,8 +5,9 @@ yum install -y rh-git29-git golang libtool make openssl wget time python27-pytho
                clang
 
 # bazel
-wget https://people.centos.org/tru/bazel-centos7/bazel-0.4.5-1.el7.centos.x86_64.rpm && \
-  rpm -ivh bazel-0.4.5-1.el7.centos.x86_64.rpm && rm bazel-0.4.5-1.el7.centos.x86_64.rpm
+wget https://github.com/bazelbuild/bazel/releases/download/0.4.5/bazel-0.4.5-installer-linux-x86_64.sh && \
+  chmod ug+x ./bazel-0.4.5-installer-linux-x86_64.sh && ./bazel-0.4.5-installer-linux-x86_64.sh && \
+  rm ./bazel-0.4.5-installer-linux-x86_64.sh
 
 # enable git29/pip, need set +e
 set +e
