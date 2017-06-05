@@ -1,5 +1,10 @@
 #!/bin/bash
 
+sed -ri -e "/mirrorlist/d" -e "s|^#baseurl|baseurl|" \
+        -e "s|http://.*.centos.org(/centos)?|http://mirrors.ustc.edu.cn/centos|" \
+        /etc/yum.repos.d/*.repo
+sed -i -e "s/^enabled=1/enabled=0/" /etc/yum/pluginconf.d/fastestmirror.conf
+
 yum install -y rh-git29-git golang libtool make openssl wget time python27-python-pip \
                unzip java-1.8.0-openjdk-devel which cmake devtoolset-4-libatomic-devel \
                clang
