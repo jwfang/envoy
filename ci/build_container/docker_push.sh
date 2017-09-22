@@ -20,7 +20,8 @@ then
         cd ci/build_container
         docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
 
-        for distro in ubuntu centos
+        #for distro in ubuntu centos
+        for distro in centos
         do
             echo "Updating lyft/envoy-build-${distro} image"
             LINUX_DISTRO=$distro ./docker_build.sh
